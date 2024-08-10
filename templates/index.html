@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article Summarizer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Article Summarizer</h1>
+        <form method="POST" action="/get_article">
+            <input type="text" name="url" placeholder="Enter article URL" required>
+            <button type="submit">Get Summary</button>
+        </form>
+
+        {% if title %}
+            <h2>Title: {{ title }}</h2>
+            <p><strong>Authors:</strong> {{ authors }}</p>
+            <p><strong>Summary:</strong> {{ summary }}</p>
+        {% elif error %}
+            <p class="error">{{ error }}</p>
+        {% endif %}
+
+    </div>
+
+</body>
+</html>
